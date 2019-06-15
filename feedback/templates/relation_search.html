@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col">
+        <h3>Choice conditions for find relation to employee</h3>
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+
+            <div class="form-group">
+                {{ form.from_date.label }}
+                {{ form.from_date(size=32, class='form-control') }}
+                {% for error in form.from_date.errors %}
+                <div class="invalid-feedback">[{{ error }}]</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                {{ form.to_date.label }}
+                {{ form.to_date(size=32, class='form-control') }}
+                {% for error in form.to_date.errors %}
+                <div class="invalid-feedback">[{{ error }}]</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                {{ form.employee_id.label }}
+                {{ form.employee_id(class='form-control') }}
+                {% for error in form.employee_id.errors %}
+                <div class="invalid-feedback">[{{ error }}]</div>
+                {% endfor %}
+
+            </div>
+
+            <div class="form-group">
+                {{ form.min_count_workdays.label }}
+                {{ form.min_count_workdays(class='form-control') }}
+                {% for error in form.min_count_workdays.errors %}
+                <div class="invalid-feedback">[{{ error }}]</div>
+                {% endfor %}
+
+            </div>
+
+            {{ form.submit_search() }}
+            {{ form.submit_save_result() }}
+        </form>
+
+
+        {% if relations %}
+        <h3>Relations</h3>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Colleague</th>
+                <th>Project</th>
+                <th>Count days</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for relation in relations %}
+            <tr>
+                <td>{{ relation.colleague.name }}</td>
+                <td>{{ relation.project.name }}</td>
+                <td class="pull-right">{{ relation.count_days }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+
+    </div>
+</div>
+
+{% endblock %}

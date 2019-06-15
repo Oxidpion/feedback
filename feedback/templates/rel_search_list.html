@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col">
+
+        {% if rel_search_dict %}
+        <h3>Relation Search List</h3>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Employee Name</th>
+                <th>From Date</th>
+                <th>To Date</th>
+                <th>Minimal count days</th>
+                <th>Created at</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for key,rel_search in rel_search_dict.items() %}
+            <tr>
+                <td><a href="{{ url_for('get_relation_search', id=key) }}">{{ rel_search.employee.name }}</a></td>
+                <td>{{ rel_search.from_date }}</td>
+                <td>{{ rel_search.to_date }}</td>
+                <td class="pull-right">{{ rel_search.min_count_days }}</td>
+                <td>{{ rel_search.created_at }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>List empty</p>
+        {% endif %}
+
+    </div>
+</div>
+
+{% endblock %}

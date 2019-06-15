@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Feedback - {{ title }}</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <a href="{{ url_for('relation_search') }}">Relation Search</a>
+        <a href="{{ url_for('relation_search_list') }}">Relation Search List</a>
+    </div>
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col">
+        <h3>Relation Search #{{ rel_search_id }}</h3>
+        <p>{{ rel_search.employee.name }} - {{ rel_search.from_date }} - {{ rel_search.to_date }} -
+            {{ rel_search.min_count_days }} - {{ rel_search.created_at }}</p>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Colleague</th>
+                <th>Project</th>
+                <th>Count days</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for relation in relations %}
+            <tr>
+                <td>{{ relation.colleague.name }}</td>
+                <td>{{ relation.project.name }}</td>
+                <td class="pull-right">{{ relation.count_days }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('create_mail', id=rel_search_id) }}">Create mailing</a>
+    </div>
+</div>
+
+{% endblock %}

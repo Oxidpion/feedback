@@ -1,0 +1,4 @@
+python-redmine
+flask
+flask-wtf
+python-dotenv
