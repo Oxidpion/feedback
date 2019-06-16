@@ -20,3 +20,5 @@ app.config.from_object(Config)
 storage = _create_storage(app.config)
 rel_search_repo = RelationSearchRepo()
 feedback_repo = FeedbackRepo()
+
+from feedback import routes
